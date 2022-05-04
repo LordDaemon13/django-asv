@@ -2,6 +2,15 @@ import os
 
 import django
 from django.db import models
+from django.core.exceptions  import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+def validate_name(name):
+    if name != 'abc':
+        raise ValidationError(
+            _('%(name)s is not abc'),
+            params={'name': name},
+        )
 
 try:
     os.environ["DJANGO_SETTINGS_MODULE"] = "benchmarks.settings"
@@ -18,6 +27,8 @@ class Book(models.Model):
 class OneField(models.Model):
     field1 = models.CharField(max_length=100)
 
+class Song(models.Model):
+    name = models.CharField(max_length=100, validators=[validate_name])
 
 class Author(models.Model):
     author = models.CharField(max_length=100)
