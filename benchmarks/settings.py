@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "benchmarks",
+    "benchmarks.url_benchmarks.url_resolve_flat_i18n_off"
 ]
 
 SECRET_KEY = "NOT REALLY SECRET"
