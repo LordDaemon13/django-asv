@@ -1,0 +1,32 @@
+name: Results
+
+on:
+  push:
+    branches:
+      - "git_scraping_workflow"
+  schedule:
+    - cron: '*/2 * * * *' 
+  
+jobs:
+  store_results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Install python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: run benchmarks
+        run: |- 
+          asv run
+          asv compare stable/3.2.x main > results.txt 
+      - name: commit results
+        run: |- 
+          git config user.name "deepakdinesh1123"
+          git config user.email "deepakdinesh1123@users.noreply.github.com"
+          git add -A
+          git commit -m "Benchmark results"
+          git push
