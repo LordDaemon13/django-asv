@@ -23,7 +23,12 @@ jobs:
         run: |- 
           asv machine --yes
           asv run
-          asv compare stable/3.2.x main > results.txt 
+          asv compare stable/3.2.x main > results.txt
+      - name: Cache Django repo
+        uses: actions/cache@v3
+        with:
+          path: Django
+          key: ${{ runner.os }}-Django
       - name: commit results
         run: |- 
           git config user.name "deepakdinesh1123"
