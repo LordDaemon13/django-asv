@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - "main"
-      - "lint_and_benchmark_workflows"
   
 jobs:
   flake8: 
@@ -32,14 +31,7 @@ jobs:
           python-version: '3.10'
       - run: pip install isort
       - name: isort
-        run: isort .
-      - name: commit results
-        run: |- 
-          git config user.name "deepakdinesh1123"
-          git config user.email "deepakdinesh1123@users.noreply.github.com"
-          git add -A
-          git commit -m "Benchmark results"
-          git push
+        run: isort --check .
   
   black:
     runs-on: ubuntu-latest
