@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - "main"
-  
+      - "lint_and_benchmark_workflows"
 jobs:
   flake8: 
     runs-on: ubuntu-latest
