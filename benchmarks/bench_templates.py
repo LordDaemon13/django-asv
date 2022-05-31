@@ -1,10 +1,10 @@
 import os
 
-import django
-from django import template
 from django.http import HttpRequest
 from django.shortcuts import render
-from django import VERSION
+
+import django
+from django import VERSION, template
 
 try:
     os.environ["DJANGO_SETTINGS_MODULE"] = "benchmarks.settings"
@@ -44,7 +44,7 @@ class TemplateBenchmarks:
         }
 
     def time_template_render(self):
-        if VERSION >= (4,0):
+        if VERSION >= (4, 0):
             render(HttpRequest(), "permalink.html", self.context)
         else:
             render(HttpRequest(), "permalink_django_lte_40.html", self.context)
