@@ -1,10 +1,9 @@
 import os
 
-from django.http import HttpRequest
-from django.shortcuts import render
-
 import django
 from django import VERSION, template
+from django.http import HttpRequest
+from django.shortcuts import render
 
 try:
     os.environ["DJANGO_SETTINGS_MODULE"] = "benchmarks.settings"

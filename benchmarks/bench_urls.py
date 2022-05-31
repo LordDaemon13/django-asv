@@ -1,8 +1,7 @@
 import os
 
-from django.urls import Resolver404, resolve, reverse
-
 import django
+from django.urls import Resolver404, resolve, reverse
 
 try:
     os.environ["DJANGO_SETTINGS_MODULE"] = "benchmarks.settings"

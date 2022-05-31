@@ -1,8 +1,7 @@
 import os
 
-from django.core.management import CommandError, call_command
-
 import django
+from django.core.management import CommandError, call_command
 
 from .models import Book
 

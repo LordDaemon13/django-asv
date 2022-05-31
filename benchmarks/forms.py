@@ -1,9 +1,8 @@
 import os
 
-from django.forms.widgets import SelectDateWidget
-
 import django
 from django import forms
+from django.forms.widgets import SelectDateWidget
 
 try:
     os.environ["DJANGO_SETTINGS_MODULE"] = "benchmarks.settings"

@@ -1,9 +1,8 @@
 import os
 
+import django
 from django.core.management import call_command
 from django.db import connection
-
-import django
 
 from .models import OneField
 
