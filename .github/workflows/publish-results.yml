@@ -2,9 +2,7 @@ name: Publish results
 
 on:
   workflow_run:
-    workflows:
-      - "Benchmark"
-      - "Build results"
+    workflows: ["Build results"]
     types:
       - completed
 
