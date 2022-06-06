@@ -17,6 +17,8 @@ jobs:
           python-version: '3.10'
       - name: Install Requirements
         run: pip install -r requirements.txt
-      - name: Build results
+      - name: Provide machine details
         run: |
           asv machine --yes
+      - name: Run benchmarks
+        run: echo "running benchmarks"
