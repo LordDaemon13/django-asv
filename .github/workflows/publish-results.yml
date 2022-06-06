@@ -5,6 +5,9 @@ on:
     workflows:
       - "Benchmark"
       - "Build results"
+    types:
+      - completed
+
 
 jobs:
   publish_results:
