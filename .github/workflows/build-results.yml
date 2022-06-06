@@ -20,4 +20,3 @@ jobs:
       - name: Build results
         run: |
           asv machine --yes
-          asv run HASHFILE:commits.txt
