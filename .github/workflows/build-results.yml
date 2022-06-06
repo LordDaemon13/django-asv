@@ -1,0 +1,23 @@
+name: Build results
+
+on:
+  push:
+    branches:
+      - "results-workflow"
+
+jobs:
+  obtain_results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Install python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+      - name: Build results
+        run: |
+          asv machine --yes
+          asv run HASHFILE:commits.txt
