@@ -1,4 +1,4 @@
-name: Build results
+name: results
 
 on:
   push:

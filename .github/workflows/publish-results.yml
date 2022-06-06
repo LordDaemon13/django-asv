@@ -1,9 +1,10 @@
-name: Publish results
+name: Publish
 
 on:
   workflow_run:
-    workflows: [Build results]
-    types: [completed]
+    workflows: ["results"]
+    types:
+      - completed
 
 
 jobs:
