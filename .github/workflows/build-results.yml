@@ -29,4 +29,4 @@ jobs:
         with:
           branch: results-html
           file_pattern: html/*.* results/*.*
-          commit_user_name: 'Github actions bot'
+          commit_user_name: 'Github actions bot(results)'
