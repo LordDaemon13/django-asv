@@ -2,7 +2,7 @@ name: Publish
 
 on:
   workflow_run:
-    workflows: ["results"]
+    workflows: ["Build results"]
     types:
       - completed
 

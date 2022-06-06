@@ -1,4 +1,4 @@
-name: results
+name: Build results
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - "results-workflow"
 
 jobs:
+
   obtain_results:
     runs-on: ubuntu-latest
     steps:
@@ -20,5 +21,20 @@ jobs:
       - name: Provide machine details
         run: |
           asv machine --yes
-      - name: Run benchmarks
-        run: echo "running benchmarks"
+          asv run HASHFILE:commits.txt
+
+  publish_results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: "results-workflow"
+      - name: publish_results
+        run: asv publish
+      - name: Commit results
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: results-html
+          file_pattern: html/*.* results/*.*
+          commit_user_name: 'Github actions bot'
