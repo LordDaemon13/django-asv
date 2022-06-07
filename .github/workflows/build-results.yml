@@ -27,8 +27,8 @@ jobs:
           asv publish
           mkdir -p build-results
           mkdir -p results-preview
-          mv -f results build-results
-          mv -f html results-preview
+          mv -f results/* build-results/
+          mv -f html/* results-preview/
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
