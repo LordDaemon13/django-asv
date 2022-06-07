@@ -28,5 +28,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: results-html
+          add_options: -a
+          file_pattern:  html/*.* results/*.* results/*
           commit_user_name: 'Github actions bot(results)'
-          file_pattern:  html/*.*
