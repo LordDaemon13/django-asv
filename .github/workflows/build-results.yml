@@ -22,8 +22,8 @@ jobs:
         run: |
           asv machine --yes
           asv run
-          mkdir -p ci-results/results
-          cp -r results/* ci-results/results/
+          mkdir -p ci-results/
+          cp -r results/* ci-results/
           git status
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4.6.0
