@@ -21,7 +21,7 @@ jobs:
       - name: build results
         run: |
           asv machine --yes
-          asv run HASHFILE:commits.txt
+          asv run
       - name: publish_results
         run: |
           asv publish
@@ -32,6 +32,5 @@ jobs:
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: results-html
           add_options: --all
           commit_user_name: 'Github actions bot(results)'
