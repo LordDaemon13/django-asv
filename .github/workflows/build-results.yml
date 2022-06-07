@@ -21,7 +21,7 @@ jobs:
       - name: build results
         run: |
           asv machine --yes
-          asv run
+          asv run --bench just-discover
           mkdir -p build-results
           mv -f results build-results
       - name: publish_results
