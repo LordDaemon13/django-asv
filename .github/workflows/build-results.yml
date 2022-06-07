@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p ci-results/results
           mv -f results/* ci-results/results/
-          ls ci-results/results
+          git status
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
