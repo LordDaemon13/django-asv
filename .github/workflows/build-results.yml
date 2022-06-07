@@ -31,5 +31,6 @@ jobs:
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          file_pattern: ci-results/
           add_options: --all
           commit_user_name: 'Github actions bot(results)'
