@@ -24,8 +24,8 @@ jobs:
           asv run HASHFILE:commits.txt
       - name: Move results
         run: |
-          mkdir -p build-results/results
-          mv -f results/* build-results/results
+          mkdir -p ci-results/results
+          mv -f results/* ci-results/results
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
