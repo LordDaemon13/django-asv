@@ -21,14 +21,11 @@ jobs:
       - name: build results
         run: |
           asv machine --yes
-          asv run
-      - name: publish_results
+          asv run HASHFILE:commits.txt
+      - name: Move results
         run: |
-          asv publish
-          mkdir -p build-results
-          mkdir -p results-preview
-          mv -f results/* build-results/
-          mv -f html/* results-preview/
+          mkdir -p build-results/results
+          mv -f results/* build-results/results
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
