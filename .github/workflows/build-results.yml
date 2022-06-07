@@ -22,14 +22,11 @@ jobs:
         run: |
           asv machine --yes
           asv run
-          ls
-      - name: Move results
-        run: |
           mkdir -p ci-results/results
           cp -r results/* ci-results/results/
           git status
       - name: Commit results
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4.6.0
         with:
           file_pattern: ci-results/
           add_options: --all
