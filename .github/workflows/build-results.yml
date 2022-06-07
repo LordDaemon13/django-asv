@@ -26,7 +26,7 @@ jobs:
       - name: Move results
         run: |
           mkdir -p ci-results/results
-          mv -f results/* ci-results/results/
+          cp results/* ci-results/results/
           git status
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4
