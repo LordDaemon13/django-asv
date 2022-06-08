@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - "main"
+      - "results_workflow"
 
 jobs:
 
@@ -23,3 +24,11 @@ jobs:
         run: |-
           asv machine --yes
           asv run
+      - name: Move results
+        run: |
+          mv -f results/* ci-results/results/
+      - name: Commit results
+        uses: stefanzweifel/git-auto-commit-action@v4.6.0
+        with:
+          commit_user_name: 'Github actions bot(results)'
+          commit_message: 'results added [skip ci]'
