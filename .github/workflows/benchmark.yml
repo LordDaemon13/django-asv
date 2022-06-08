@@ -26,6 +26,7 @@ jobs:
       - name: Move results
         run: |
           mv -f results/* ci-results/results/
+          ls ci-results/results
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4.6.0
         with:
