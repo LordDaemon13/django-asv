@@ -1,34 +1,35 @@
-name: Benchmark
+name: Publish results
 
 on:
-  pull_request:
-  push:
-    branches:
-      - "main"
+  workflow_run:
+    workflows: ["Benchmark"]
+    types:
+      - completed
 
 jobs:
-
-  run_benchmarks:
+  publish_results:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: 'results-workflow'
       - name: Install python
         uses: actions/setup-python@v3
         with:
           python-version: '3.10'
       - name: Install Requirements
         run: pip install -r requirements.txt
-      - name: Run Benchmarks
-        run: |-
-          asv machine --yes
-          asv run
-      - name: Move results
+      - name: Copy asv.conf
+        run: cp -f asv.conf.json ci-results/
+      - name: Publish results
         run: |
-          mv -f results/*/*.* ci-results/results/fv-*/
-          mv -f results/* ci-results/results/
+          cd ci-results
+          asv machine --yes
+          asv publish
+          cd ..
       - name: Commit results
         uses: stefanzweifel/git-auto-commit-action@v4.6.0
         with:
           commit_user_name: 'Github actions bot(results)'
-          commit_message: 'results added'
+          commit_message: 'results published [skip ci]'
