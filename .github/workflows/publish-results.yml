@@ -2,10 +2,10 @@ name: Publish results
 
 on:
   workflow_run:
-    workflows:
-      - Benchmark
+    workflows: ["Benchmark"]
     types:
       - completed
+    branches: ["results-workflow"]
 
 jobs:
   publish_results:
