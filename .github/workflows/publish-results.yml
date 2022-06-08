@@ -25,7 +25,7 @@ jobs:
       - name: Publish results
         run: |
           cd ci-results
-          asv machine --yes
+          asv machine --machine INTEL --yes
           asv publish
           cd ..
       - name: Commit results
