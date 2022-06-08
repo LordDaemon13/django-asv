@@ -22,7 +22,8 @@ jobs:
         run: |
           asv machine --yes
           asv run
-      - name: Commit results
+      - name: Move results
+        run: |
           mkdir -p ci-results/results
           mv -f results/* ci-results/results/
       - name: Commit results
